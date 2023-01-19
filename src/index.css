@@ -12,12 +12,6 @@ code {
     monospace;
 }
 
-.navbar {
-  font-family: "Do Hyeon", sans-serif;
-  height: 10vh;
-  display: flexbox;
-}
-
-.home {
-  font-size: x-large;
+body::-webkit-scrollbar {
+  display: none;
 }
