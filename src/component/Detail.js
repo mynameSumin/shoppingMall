@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import data from "../data.js";
 
 function Detail() {
+  let navigate = useNavigate();
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark" className="navbar">
@@ -12,8 +15,9 @@ function Detail() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/detail">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="/event">Event</Nav.Link>
+            <Nav.Link href="/sale">Sale</Nav.Link>
+            <Nav.Link href="/detail/:id">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

@@ -7,6 +7,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 function Main() {
   let [clothesInfo, setClothesInfo] = useState(data);
+
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark" className="navbar">
@@ -16,8 +17,9 @@ function Main() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/detail">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="/event">Event</Nav.Link>
+            <Nav.Link href="/sale">Sale</Nav.Link>
+            <Nav.Link href="/detail/:id">Detail</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
