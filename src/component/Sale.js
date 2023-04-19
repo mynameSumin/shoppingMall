@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
+import { propTypes } from "react-bootstrap/esm/Image";
 import { useNavigate } from "react-router-dom";
-import data from "../data.js";
 
-function Sale() {
+function Sale(props) {
   let navigate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ function Sale() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/event">Event</Nav.Link>
             <Nav.Link href="/sale">Sale</Nav.Link>
-            <Nav.Link href="/detail/:id">Detail</Nav.Link>
+            {/* <Nav.Link href="/detail">Detail</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
@@ -30,7 +30,7 @@ function Sale() {
             />
           </div>
           <div className="col-md-6">
-            <h4 className="pt-5">상품명</h4>
+            <h4 className="pt-5">{props.clothesInfo[1].title}</h4>
             <p>상품설명</p>
             <p>120000원</p>
             <button className="btn btn-danger">주문하기</button>

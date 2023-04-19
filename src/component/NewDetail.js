@@ -3,7 +3,7 @@ import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { parsePath, useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
 
-function Detail(props) {
+function NewDetail(props) {
   let { id } = useParams();
   let [timer, setTimer] = useState(false);
   let [tab, setTab] = useState(0);
@@ -25,13 +25,6 @@ function Detail(props) {
       setTimer(true);
     }, 5000);
   }, []);
-  // []은 디펜던시로 []만 쓰면 mount될 때만 적용되고 안에 state를 적으면 state가 변할 때마다 실행된다
-  // useEffect(()=>{
-  //   return ()=>{~~}
-  // })
-  //이런 식으로 useEffect안에 return을 적으면 useEffect가 적용되기 전에 return 안의 내용이 실행된다.
-  //언제 사용하는가? 기존의 useEffect효과를 없애고 싶을 때(clean up function)
-  // ex) 기존의 타이머를 없애고 싶을 때(clearTimeout), 기존 데이터요청은 제거하고 싶을 때
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark" className="navbar">
@@ -47,7 +40,7 @@ function Detail(props) {
           </Nav>
         </Container>
       </Navbar>
-      <div className={"container mainScreen start " + fade}>
+      <div className={"container mainScreen start " + page}>
         <div className="row">
           {timer == false ? (
             <Timer></Timer>
@@ -56,20 +49,26 @@ function Detail(props) {
               실패 했지롱 ~
             </div>
           )}
-          <div className="col-sm-6 col-md-4 photoBox">
+          <div className="col-md-6 col-sm-6 photoBox">
             <img
               src={
-                process.env.PUBLIC_URL + "/clothes" + (Number(id) + 1) + ".jpg"
+                "https://codingapple1.github.io/shop/shoes" +
+                (Number(id) + 1) +
+                ".jpg"
               }
               className="detailPhoto"
             />
           </div>
-          <div className="col-sm-6 col-md-8 detailInfo">
-            <h4 className="pt-5 title">{props.clothesInfo[id].title}</h4>
-            <p className="content">{props.clothesInfo[id].content}</p>
-            <p className="price">{props.clothesInfo[id].price}원</p>
-            <button className="btn btn-danger">주문하기</button>
-          </div>
+          {props.newClothes.length == 0 ? (
+            <div>로딩 중입니다</div>
+          ) : (
+            <div className="col-sm-6 col-md-6 detailInfo">
+              <h4 className="pt-5 title">{props.newClothes[id].title}</h4>
+              <p className="content">{props.newClothes[id].content}</p>
+              <p className="price">{props.newClothes[id].price}원</p>
+              <button className="btn btn-danger">주문하기</button>
+            </div>
+          )}
           <Nav variant="tabs" id="nav-tab" defaultActiveKey="link0">
             <Nav.Item>
               <Nav.Link
@@ -127,10 +126,11 @@ function Timer() {
 
 function ShowTab({ tab, fade, setFade }) {
   useEffect(() => {
-    setTimeout(() => {
+    let a = setTimeout(() => {
       setFade("end");
     }, 10);
     return () => {
+      clearTimeout(a);
       setFade("");
     };
   }, [tab]);
@@ -150,4 +150,4 @@ function ShowTab({ tab, fade, setFade }) {
   }
 }
 
-export default Detail;
+export default NewDetail;

@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.detailPhoto {
+  margin: auto;
+  margin-top: 5%;
+  border-radius: 6%;
+  /* width: 400px; */
+  max-width: 100%;
+  align-items: flex-start;
+}
+
+.photoBox {
+  flex-grow: 3;
+}
+
+.row {
+  width: 100vw;
+}
+#timeSale {
+  display: block;
+  height: min-content;
+  margin: 0;
+  text-align: center;
+}
+
+.mainScreen {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-basis: auto;
+}
+
+.btn-danger {
+  display: block;
+  margin-top: 5%;
+  margin-bottom: 20px;
+  width: 19vw;
+  height: 9vh;
+}
+
+.title {
+  font-family: "Do Hyeon";
+  font-size: 60px;
+}
+
+.detailInfo {
+  font-family: "Do Hyeon";
+  align-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 60px;
+}
+
+@media (max-width: 575px) {
+  .detailInfo {
+    text-align: center;
+  }
+  .btn-danger {
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.content {
+  font-weight: lighter;
+  font-size: 23px;
+}
+
+.price {
+  font-size: 23px;
+}
+
+#nav-tab {
+  margin-top: 30px;
+}
+
+.review {
+  margin-top: 20px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+body {
+  margin-bottom: 40px;
+}
+
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
+}

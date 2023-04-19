@@ -37,13 +37,15 @@
   }
 }
 .container {
-  margin-left: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .navbar {
   font-family: "Do Hyeon", sans-serif;
   height: 10vh;
   display: flexbox;
+  padding-left: 10px;
 }
 
 .home {
@@ -73,11 +75,10 @@
   }
 }
 
-.content {
-  display: flex;
+.container-fluid {
   justify-content: space-between;
-  flex-wrap: inherit;
-  margin: 20px 0px 20px 0px;
+  flex-wrap: wrap;
+  margin: 20px 0px 30px 0px;
 }
 
 .row-content {

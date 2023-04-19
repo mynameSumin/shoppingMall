@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { useNavigate, Outlet } from "react-router-dom";
-import data from "../data.js";
 
-function Detail() {
+function Event() {
   let navigate = useNavigate();
 
   return (
@@ -35,7 +34,7 @@ function Detail() {
             >
               Sale
             </Nav.Link>
-            <Nav.Link href="/detail/:id">Detail</Nav.Link>
+            {/* <Nav.Link href="/detail/:id">Detail</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
@@ -63,4 +62,4 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default Event;
