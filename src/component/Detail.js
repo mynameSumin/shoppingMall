@@ -47,7 +47,7 @@ function Detail(props) {
           </Nav>
         </Container>
       </Navbar>
-      <div className={"container mainScreen start " + fade}>
+      <div className={"container mainScreen start " + page}>
         <div className="row">
           {timer == false ? (
             <Timer></Timer>
