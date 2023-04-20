@@ -1,4 +1,3 @@
-// import logo from "./logo.svg";
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Main from "./component/main";
@@ -7,6 +6,7 @@ import Event from "./component/Event";
 import Sale from "./component/Sale";
 import data from "./data.js";
 import NewDetail from "./component/NewDetail";
+import Cart from "./component/Cart";
 
 function App() {
   let [newClothes, setNewClothes] = useState([]);
@@ -35,6 +35,10 @@ function App() {
       <Route
         path="/newDetail/:id"
         element={<NewDetail getData={getData} newClothes={newClothes} />}
+      />
+      <Route
+        path="/cart"
+        element={<Cart clothesInfo={clothesInfo} newClothes={newClothes} />}
       />
       <Route path="/event" element={<Event />}>
         <Route path="event1" element={<div>첫 주문시 양말 한 개 서비스</div>} />
