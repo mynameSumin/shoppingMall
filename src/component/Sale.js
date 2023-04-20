@@ -2,25 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { propTypes } from "react-bootstrap/esm/Image";
 import { useNavigate } from "react-router-dom";
+import "./Detail.css";
+import MyNav from "./MyNav";
 
 function Sale(props) {
   let navigate = useNavigate();
 
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark" className="navbar">
-        <Container className="container">
-          <Navbar.Brand href="/" className="home">
-            밍숭맹숭
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/event">Event</Nav.Link>
-            <Nav.Link href="/sale">Sale</Nav.Link>
-            {/* <Nav.Link href="/detail">Detail</Nav.Link> */}
-          </Nav>
-        </Container>
-      </Navbar>
+      <MyNav />
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -29,10 +19,10 @@ function Sale(props) {
               width="100%"
             />
           </div>
-          <div className="col-md-6">
-            <h4 className="pt-5">{props.clothesInfo[1].title}</h4>
-            <p>상품설명</p>
-            <p>120000원</p>
+          <div className="col-md-6 detailInfo">
+            <h4 className="pt-5 title">{props.clothesInfo[1].title}</h4>
+            <p className="content">안팔려서 할인 중</p>
+            <p className="price">120000원</p>
             <button className="btn btn-danger">주문하기</button>
           </div>
         </div>

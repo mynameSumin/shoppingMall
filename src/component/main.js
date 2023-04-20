@@ -1,30 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
-// import data from "../data.js";
 import "./Main.css";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
+import MyNav from "./MyNav";
 
 function Main(props) {
   let [clothesInfo, setClothesInfo] = useState(props.clothesInfo);
-  // let [newClothes, setNewClothes] = useState(props.newClothes);
   let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark" className="navbar">
-        <Container className="container">
-          <Navbar.Brand href="/" className="home">
-            밍숭맹숭
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/event">Event</Nav.Link>
-            <Nav.Link href="/sale">Sale</Nav.Link>
-            {/* <Nav.Link href="/detail/:id">Detail</Nav.Link> */}
-          </Nav>
-        </Container>
-      </Navbar>
+      <MyNav />
       <div>
         <img src={process.env.PUBLIC_URL + "/bg-img.png"} className="main-bg" />
       </div>

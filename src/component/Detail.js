@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { parsePath, useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
+import MyNav from "./MyNav";
 
 function Detail(props) {
   let { id } = useParams();
@@ -34,19 +35,7 @@ function Detail(props) {
   // ex) 기존의 타이머를 없애고 싶을 때(clearTimeout), 기존 데이터요청은 제거하고 싶을 때
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark" className="navbar">
-        <Container className="container">
-          <Navbar.Brand href="/" className="home">
-            밍숭맹숭
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/event">Event</Nav.Link>
-            <Nav.Link href="/sale">Sale</Nav.Link>
-            {/* <Nav.Link href="/detail/:id">Detail</Nav.Link> */}
-          </Nav>
-        </Container>
-      </Navbar>
+      <MyNav />
       <div className={"container mainScreen start " + page}>
         <div className="row">
           {timer == false ? (

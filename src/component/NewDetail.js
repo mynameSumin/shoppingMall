@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { parsePath, useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
+import MyNav from "./MyNav";
 
 function NewDetail(props) {
   let { id } = useParams();
@@ -10,6 +11,7 @@ function NewDetail(props) {
   let [fade, setFade] = useState("");
   let [page, setPage] = useState("");
 
+  // --페이지 시작시 fade 효과--
   useEffect(() => {
     let a = setTimeout(() => {
       setPage("end");
@@ -20,26 +22,17 @@ function NewDetail(props) {
     };
   }, []);
 
+  // -- 상단 이벤트 바 --
   useEffect(() => {
     setTimeout(() => {
       setTimer(true);
     }, 5000);
   }, []);
+
   return (
     <div className="App">
-      <Navbar bg="dark" variant="dark" className="navbar">
-        <Container className="container">
-          <Navbar.Brand href="/" className="home">
-            밍숭맹숭
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/event">Event</Nav.Link>
-            <Nav.Link href="/sale">Sale</Nav.Link>
-            {/* <Nav.Link href="/detail/:id">Detail</Nav.Link> */}
-          </Nav>
-        </Container>
-      </Navbar>
+      <MyNav />
+
       <div className={"container mainScreen start " + page}>
         <div className="row">
           {timer == false ? (
@@ -69,6 +62,8 @@ function NewDetail(props) {
               <button className="btn btn-danger">주문하기</button>
             </div>
           )}
+
+          {/* -- 상세 정보 탭 -- */}
           <Nav variant="tabs" id="nav-tab" defaultActiveKey="link0">
             <Nav.Item>
               <Nav.Link
