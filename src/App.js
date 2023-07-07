@@ -7,6 +7,7 @@ import Sale from "./component/Sale";
 import data from "./data.js";
 import NewDetail from "./component/NewDetail";
 import Cart from "./component/Cart";
+import MyNav from "./component/MyNav";
 
 function App() {
   let [newClothes, setNewClothes] = useState([]);

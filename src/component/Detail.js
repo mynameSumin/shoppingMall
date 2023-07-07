@@ -3,8 +3,12 @@ import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { parsePath, useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
 import MyNav from "./MyNav";
+import { addToCart } from "../redux/store";
+import { useDispatch } from "react-redux";
 
 function Detail(props) {
+  const navigate = useNavigate();
+  let dispatch = useDispatch();
   let { id } = useParams();
   let [timer, setTimer] = useState(false);
   let [tab, setTab] = useState(0);
@@ -57,7 +61,21 @@ function Detail(props) {
             <h4 className="pt-5 title">{props.clothesInfo[id].title}</h4>
             <p className="content">{props.clothesInfo[id].content}</p>
             <p className="price">{props.clothesInfo[id].price}원</p>
-            <button className="btn btn-danger">주문하기</button>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                dispatch(
+                  addToCart({
+                    id: props.clothesInfo[id].id,
+                    name: props.clothesInfo[id].title,
+                    count: 1,
+                  })
+                );
+                navigate("/cart");
+              }}
+            >
+              주문하기
+            </button>
           </div>
           <Nav variant="tabs" id="nav-tab" defaultActiveKey="link0">
             <Nav.Item>

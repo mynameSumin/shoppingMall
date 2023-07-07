@@ -1,5 +1,8 @@
 import { Table, Container, Nav, Navbar } from "react-bootstrap";
 import MyNav from "./MyNav";
+import { useSelector, useDispatch } from "react-redux";
+import "./Cart.css";
+import { plusCount, minusCount } from "../redux/store";
 
 function Cart() {
   return (
@@ -8,7 +11,7 @@ function Cart() {
 
       {/* --여기서부터 장바구니-- */}
       <h1 style={{ fontFamily: "Do Hyeon", marginTop: "30px" }}>장바구니</h1>
-      <Table hover>
+      <Table hover style={{ marginTop: "40px" }}>
         <thead>
           <tr>
             <th></th>
@@ -18,28 +21,48 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Larry the Bird</td>
-            <td>hi</td>
-            <td>@twitter</td>
-          </tr>
+          <CartList />
         </tbody>
       </Table>
     </div>
   );
+}
+
+function CartList() {
+  let cart = useSelector((state) => state.cart);
+  let dispatch = useDispatch();
+
+  return cart.map((a, i) => {
+    return (
+      <tr key={i}>
+        <td>{i + 1}</td>
+        <td>{cart[i].name}</td>
+        <td>{cart[i].count}</td>
+        <td>
+          <button
+            onClick={() => {
+              dispatch(minusCount(cart[i].id));
+            }}
+            style={{ display: "inline" }}
+            className="countBtn"
+          >
+            -
+          </button>
+          <div style={{ display: "inline" }}> 수량변경 </div>
+          <button
+            onClick={() => {
+              dispatch(plusCount(cart[i].id));
+            }}
+            style={{ display: "inline" }}
+            className="countBtn"
+          >
+            {" "}
+            +{" "}
+          </button>
+        </td>
+      </tr>
+    );
+  });
 }
 
 export default Cart;

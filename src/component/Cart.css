@@ -1,0 +1,10 @@
+.countBtn {
+  border: none;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  width: 25px;
+}
+
+tr {
+  align-items: baseline;
+}
