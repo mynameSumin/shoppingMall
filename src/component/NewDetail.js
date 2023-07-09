@@ -3,8 +3,12 @@ import { Container, Nav, Navbar, Row, Col } from "react-bootstrap";
 import { parsePath, useNavigate, useParams } from "react-router-dom";
 import "./Detail.css";
 import MyNav from "./MyNav";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/store";
 
 function NewDetail(props) {
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
   let { id } = useParams();
   let [timer, setTimer] = useState(false);
   let [tab, setTab] = useState(0);
@@ -59,7 +63,21 @@ function NewDetail(props) {
               <h4 className="pt-5 title">{props.newClothes[id].title}</h4>
               <p className="content">{props.newClothes[id].content}</p>
               <p className="price">{props.newClothes[id].price}원</p>
-              <button className="btn btn-danger">주문하기</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  dispatch(
+                    addToCart({
+                      id: props.newClothes[id].id,
+                      name: props.newClothes[id].title,
+                      count: 1,
+                    })
+                  );
+                  navigate("/cart");
+                }}
+              >
+                주문하기
+              </button>
             </div>
           )}
 

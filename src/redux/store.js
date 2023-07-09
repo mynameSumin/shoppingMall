@@ -3,8 +3,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 let cart = createSlice({
   name: "cart", //state 이름
   initialState: [
-    { id: 0, name: "White and Black", count: 2 },
-    { id: 2, name: "Grey Yordan", count: 1 },
+    { id: 6, name: "White and Black", count: 2 },
+    { id: 7, name: "Grey Yordan", count: 1 },
   ], //state값
   reducers: {
     plusCount(state, action) {
@@ -20,12 +20,23 @@ let cart = createSlice({
       if (state[index].count > 1) {
         state[index].count -= 1;
       } else if (state[index].count == 1) {
+        //한 개 남았을 때 마이너스시 제품 삭제
         const newState = state.filter((state) => state.id !== action.payload);
         return newState;
       }
     },
     addToCart(state, action) {
-      state.push(action.payload);
+      let index = state.findIndex((a) => {
+        return a.id == action.payload.id;
+      });
+
+      if (index == -1) {
+        //장바구니에 같은 상품이 없을 때
+        state.push(action.payload);
+      } else {
+        //장바구니에 같은 상품이 있을 때
+        state[index].count++;
+      }
     },
   }, //state 수정 함수
 });
